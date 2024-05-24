@@ -734,7 +734,7 @@ const Chat = () => {
                 <h1 className={styles.chatEmptyStateTitle}>{ui?.chat_title}</h1>
                 <h2
                   className={styles.chatEmptyStateSubtitle}
-                  dangerouslySetInnerHTML={{ __html: ui?.chat_description }}></h2>
+                  dangerouslySetInnerHTML={{ __html: ui?.chat_description || '' }}></h2>
               </Stack>
             ) : (
               <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? '40px' : '0px' }} role="log">
