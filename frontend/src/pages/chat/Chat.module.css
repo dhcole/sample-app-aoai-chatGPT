@@ -21,9 +21,7 @@
   flex-direction: column;
   align-items: center;
   background: radial-gradient(108.78% 108.78% at 50.02% 19.78%, #ffffff 57.29%, #eef6fe 100%);
-  box-shadow:
-    0px 2px 4px rgba(0, 0, 0, 0.14),
-    0px 0px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   overflow-y: auto;
   max-height: calc(100vh - 100px);
@@ -61,6 +59,10 @@
   color: #616161;
 }
 
+.chatEmptyStateSubtitle a {
+  padding: 0;
+}
+
 .chatIcon {
   height: 62px;
   width: auto;
@@ -85,20 +87,16 @@
 }
 
 .chatMessageUserMessage {
-  display: flex;
   padding: 20px;
   background: #edf5fd;
   border-radius: 8px;
-  box-shadow:
-    0px 2px 4px rgba(0, 0, 0, 0.14),
-    0px 0px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12);
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
   color: #242424;
   order: 0;
-  flex-grow: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
   max-width: 80%;
@@ -113,9 +111,7 @@
 .chatMessageError {
   padding: 20px;
   border-radius: 8px;
-  box-shadow:
-    rgba(182, 52, 67, 1) 1px 1px 2px,
-    rgba(182, 52, 67, 1) 0px 0px 1px;
+  box-shadow: rgba(182, 52, 67, 1) 1px 1px 2px, rgba(182, 52, 67, 1) 0px 0px 1px;
   color: #242424;
   flex: none;
   order: 0;
@@ -242,9 +238,7 @@
   padding: 16px 16px;
   gap: 8px;
   background: #ffffff;
-  box-shadow:
-    0px 2px 4px rgba(0, 0, 0, 0.14),
-    0px 0px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   flex: auto;
   order: 0;

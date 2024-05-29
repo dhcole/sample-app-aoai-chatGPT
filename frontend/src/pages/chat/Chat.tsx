@@ -148,7 +148,7 @@ const Chat = () => {
     }
   }
 
-  const makeApiRequestWithoutCosmosDB = async (question: string, conversationId?: string) => {
+  const makeApiRequestWithoutCosmosDB = async (question: string, conversationId?: string, base64Image?: string) => {
     setIsLoading(true)
     setShowLoadingMessage(true)
     const abortController = new AbortController()
@@ -160,6 +160,7 @@ const Chat = () => {
       content: question,
       date: new Date().toISOString()
     }
+    if (base64Image) userMessage.image_url = base64Image
 
     let conversation: Conversation | null | undefined
     if (!conversationId) {
@@ -272,7 +273,7 @@ const Chat = () => {
     return abortController.abort()
   }
 
-  const makeApiRequestWithCosmosDB = async (question: string, conversationId?: string) => {
+  const makeApiRequestWithCosmosDB = async (question: string, conversationId?: string, base64Image?: string) => {
     setIsLoading(true)
     setShowLoadingMessage(true)
     const abortController = new AbortController()
@@ -742,7 +743,14 @@ const Chat = () => {
                   <>
                     {answer.role === 'user' ? (
                       <div className={styles.chatMessageUser} tabIndex={0}>
-                        <div className={styles.chatMessageUserMessage}>{answer.content}</div>
+                        <div className={styles.chatMessageUserMessage}>
+                          {answer.image_url && (
+                            <div>
+                              <img width="100" src={answer.image_url}></img>
+                            </div>
+                          )}
+                          <div>{answer.content}</div>
+                        </div>
                       </div>
                     ) : answer.role === 'assistant' ? (
                       <div className={styles.chatMessageGpt}>
@@ -869,10 +877,10 @@ const Chat = () => {
                 clearOnSend
                 placeholder="Type a new question..."
                 disabled={isLoading}
-                onSend={(question, id) => {
+                onSend={(question, id, base64Image) => {
                   appStateContext?.state.isCosmosDBAvailable?.cosmosDB
-                    ? makeApiRequestWithCosmosDB(question, id)
-                    : makeApiRequestWithoutCosmosDB(question, id)
+                    ? makeApiRequestWithCosmosDB(question, id, base64Image)
+                    : makeApiRequestWithoutCosmosDB(question, id, base64Image)
                 }}
                 conversationId={
                   appStateContext?.state.currentChat?.id ? appStateContext?.state.currentChat?.id : undefined
